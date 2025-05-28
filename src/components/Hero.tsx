@@ -123,9 +123,9 @@ const Hero = () => {
             <div className="absolute inset-0 bg-gradient-to-r from-blue-600/20 to-purple-600/20 rounded-3xl blur-2xl transform scale-105"></div>
             <div className="relative bg-white/10 backdrop-blur-sm rounded-3xl p-2 border border-white/20">
               <img
-                src="https://images.unsplash.com/photo-1556157382-97eda2d62296?w=600&h=600&fit=crop&crop=face"
-                alt="Professional using modern technology"
-                className="w-full h-auto rounded-2xl shadow-2xl"
+                src="https://postimage.me/image/WhatsApp-Image-2025-05-28-at-12.34.01-2b27a1ed.UFzcus"
+                alt="Professional workspace"
+                className="w-full h-auto rounded-2xl shadow-2xl object-cover"
               />
             </div>
           </div>
