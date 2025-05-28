@@ -90,20 +90,23 @@ const Skills = () => {
 
         {/* Category Navigation */}
         <div className="flex flex-wrap justify-center gap-4 mb-16">
-          {skillCategories.map((category, index) => (
-            <button
-              key={index}
-              onClick={() => setActiveCategory(index)}
-              className={`group flex items-center space-x-3 px-6 py-4 rounded-2xl font-semibold transition-all duration-300 ${
-                activeCategory === index
-                  ? `bg-gradient-to-r ${category.color} text-white shadow-xl transform scale-105`
-                  : 'bg-white/70 backdrop-blur-sm text-gray-700 hover:bg-white hover:shadow-lg border border-gray-200'
-              }`}
-            >
-              <category.icon className="w-5 h-5" />
-              <span>{category.title}</span>
-            </button>
-          ))}
+          {skillCategories.map((category, index) => {
+            const IconComponent = category.icon;
+            return (
+              <button
+                key={index}
+                onClick={() => setActiveCategory(index)}
+                className={`group flex items-center space-x-3 px-6 py-4 rounded-2xl font-semibold transition-all duration-300 ${
+                  activeCategory === index
+                    ? `bg-gradient-to-r ${category.color} text-white shadow-xl transform scale-105`
+                    : 'bg-white/70 backdrop-blur-sm text-gray-700 hover:bg-white hover:shadow-lg border border-gray-200'
+                }`}
+              >
+                <IconComponent className="w-5 h-5" />
+                <span>{category.title}</span>
+              </button>
+            );
+          })}
         </div>
 
         {/* Enhanced Skills Display */}
@@ -112,7 +115,7 @@ const Skills = () => {
           <div className="space-y-8 animate-fade-in">
             <div className="flex items-center space-x-4 mb-8">
               <div className={`w-16 h-16 bg-gradient-to-r ${skillCategories[activeCategory].color} rounded-2xl flex items-center justify-center shadow-lg`}>
-                <skillCategories[activeCategory].icon className="h-8 w-8 text-white" />
+                {React.createElement(skillCategories[activeCategory].icon, { className: "h-8 w-8 text-white" })}
               </div>
               <div>
                 <h3 className="text-3xl font-bold text-gray-900">{skillCategories[activeCategory].title}</h3>
@@ -153,23 +156,26 @@ const Skills = () => {
             </div>
 
             <div className="space-y-6">
-              {achievements.map((achievement, index) => (
-                <div key={index} className="group p-6 bg-white/80 backdrop-blur-sm rounded-2xl border border-white/50 shadow-lg hover:shadow-xl transition-all duration-300 hover:transform hover:-translate-y-2">
-                  <div className="flex items-center space-x-4">
-                    <div className="w-16 h-16 bg-gradient-to-r from-yellow-400 to-orange-500 rounded-2xl flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-300">
-                      <achievement.icon className="h-8 w-8 text-white" />
-                    </div>
-                    <div className="flex-1">
-                      <h4 className="text-xl font-bold text-gray-900 mb-1">{achievement.title}</h4>
-                      <div className="flex items-center space-x-2 text-gray-600">
-                        <span>{achievement.org}</span>
-                        <span>•</span>
-                        <span>{achievement.year}</span>
+              {achievements.map((achievement, index) => {
+                const AchievementIcon = achievement.icon;
+                return (
+                  <div key={index} className="group p-6 bg-white/80 backdrop-blur-sm rounded-2xl border border-white/50 shadow-lg hover:shadow-xl transition-all duration-300 hover:transform hover:-translate-y-2">
+                    <div className="flex items-center space-x-4">
+                      <div className="w-16 h-16 bg-gradient-to-r from-yellow-400 to-orange-500 rounded-2xl flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-300">
+                        <AchievementIcon className="h-8 w-8 text-white" />
+                      </div>
+                      <div className="flex-1">
+                        <h4 className="text-xl font-bold text-gray-900 mb-1">{achievement.title}</h4>
+                        <div className="flex items-center space-x-2 text-gray-600">
+                          <span>{achievement.org}</span>
+                          <span>•</span>
+                          <span>{achievement.year}</span>
+                        </div>
                       </div>
                     </div>
                   </div>
-                </div>
-              ))}
+                );
+              })}
             </div>
 
             {/* Skill Summary Card */}
