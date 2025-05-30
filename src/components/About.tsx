@@ -124,7 +124,7 @@ const About = () => {
               <div className="absolute inset-0 bg-gradient-to-r from-blue-600/30 to-purple-600/30 rounded-3xl blur-2xl transform scale-105"></div>
               <div className="relative bg-white/20 backdrop-blur-sm rounded-3xl p-3 border border-white/30 shadow-2xl">
                 <img
-                  src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=500&h=600&fit=crop&crop=face"
+                  src="https://i.ibb.co/qM1Jn9RZ/WhatsApp-Image-2025-05-28-at-12-34-01-2b27a1ed.jpg"
                   alt="Professional Profile"
                   className="w-full h-auto rounded-2xl shadow-xl"
                 />
