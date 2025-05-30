@@ -57,12 +57,7 @@ const About = () => {
                 </span>
               </h2>
               <div className="space-y-4 text-lg text-gray-600 leading-relaxed">
-                <p>
-                  I'm a dedicated full-stack developer with a passion for creating innovative 
-                  solutions that make a real impact. With over 5 years of experience in the 
-                  tech industry, I specialize in building scalable web applications and 
-                  leading development teams to success.
-                </p>
+                <p>I'm a dedicated full-stack developer with a passion for creating innovative solutions that make a real impact. </p>
                 <p>
                   My journey began with a Computer Science degree, and I've since worked 
                   with startups and established companies, always focused on delivering 
