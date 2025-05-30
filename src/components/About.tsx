@@ -58,11 +58,7 @@ const About = () => {
               </h2>
               <div className="space-y-4 text-lg text-gray-600 leading-relaxed">
                 <p>I'm a dedicated full-stack developer with a passion for creating innovative solutions that make a real impact. </p>
-                <p>
-                  My journey began with a Computer Science degree, and I've since worked 
-                  with startups and established companies, always focused on delivering 
-                  high-quality solutions that exceed expectations.
-                </p>
+                <p>Although I'm a fresher in the industry, my projects reflect a solid foundation in both frontend and backend technologies, and a keen interest in solving real-world problems through code. I'm always eager to learn, collaborate, and contribute to impactful tech solutions.</p>
               </div>
             </div>
 
