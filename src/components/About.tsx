@@ -43,6 +43,10 @@ const About = () => {
     document.body.removeChild(link);
   };
 
+  const handleViewPortfolio = () => {
+    window.open('https://devspace-baibhavi.lovable.app/', '_blank');
+  };
+
   return (
     <section id="about" className="py-20 bg-gradient-to-br from-gray-50 via-white to-blue-50 relative overflow-hidden">
       {/* Enhanced Background Elements */}
@@ -91,7 +95,11 @@ const About = () => {
                 <Download className="h-5 w-5 mr-2" />
                 Download Resume
               </Button>
-              <Button variant="outline" className="h-14 px-8 border-2 border-gray-200 hover:border-blue-500 hover:bg-blue-50 rounded-xl font-semibold text-lg transition-all duration-300">
+              <Button 
+                onClick={handleViewPortfolio}
+                variant="outline" 
+                className="h-14 px-8 border-2 border-gray-200 hover:border-blue-500 hover:bg-blue-50 rounded-xl font-semibold text-lg transition-all duration-300"
+              >
                 View Portfolio
               </Button>
             </div>
