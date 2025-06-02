@@ -1,10 +1,11 @@
 import React from 'react';
-import { User, Briefcase, Code, Users, Award, Target, Heart } from 'lucide-react';
+import { User, Briefcase, Code, Users, Award, Target, Heart, Download } from 'lucide-react';
 import { Button } from "@/components/ui/button";
+
 const About = () => {
   const highlights = [{
     icon: Briefcase,
-    title: "5+ Years Experience",
+    title: "5+ Years Experience", 
     description: "Professional software development across various industries",
     color: "from-blue-500 to-cyan-500"
   }, {
@@ -18,6 +19,7 @@ const About = () => {
     description: "Experience leading development teams and mentoring junior developers",
     color: "from-green-500 to-emerald-500"
   }];
+
   const values = [{
     icon: Award,
     title: "Excellence",
@@ -31,7 +33,18 @@ const About = () => {
     title: "Passion",
     description: "Genuinely love what I do and it shows in my work"
   }];
-  return <section id="about" className="py-20 bg-gradient-to-br from-gray-50 via-white to-blue-50 relative overflow-hidden">
+
+  const handleDownloadResume = () => {
+    const link = document.createElement('a');
+    link.href = '/resume.pdf'; // Path to your resume file in the public folder
+    link.download = 'John_Doe_Resume.pdf'; // Name for the downloaded file
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  };
+
+  return (
+    <section id="about" className="py-20 bg-gradient-to-br from-gray-50 via-white to-blue-50 relative overflow-hidden">
       {/* Enhanced Background Elements */}
       <div className="absolute inset-0">
         <div className="absolute top-1/4 -left-32 w-64 h-64 bg-gradient-to-r from-blue-400 to-cyan-400 rounded-full opacity-10 blur-3xl animate-pulse"></div>
@@ -71,7 +84,11 @@ const About = () => {
 
             {/* Call to Action */}
             <div className="flex flex-col sm:flex-row gap-4 pt-6">
-              <Button className="h-14 px-8 bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white font-semibold rounded-xl text-lg transition-all duration-300 hover:scale-105 hover:shadow-xl">
+              <Button 
+                onClick={handleDownloadResume}
+                className="h-14 px-8 bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white font-semibold rounded-xl text-lg transition-all duration-300 hover:scale-105 hover:shadow-xl"
+              >
+                <Download className="h-5 w-5 mr-2" />
                 Download Resume
               </Button>
               <Button variant="outline" className="h-14 px-8 border-2 border-gray-200 hover:border-blue-500 hover:bg-blue-50 rounded-xl font-semibold text-lg transition-all duration-300">
@@ -112,6 +129,8 @@ const About = () => {
           </div>
         </div>
       </div>
-    </section>;
+    </section>
+  );
 };
+
 export default About;
