@@ -2,14 +2,38 @@ import React, { useState } from 'react';
 import { Search, MapPin, Briefcase, ArrowRight, Play, Star } from 'lucide-react';
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
+import JobResults from './JobResults';
+import { searchJobs, Job } from '../utils/mockJobData';
 
 const Hero = () => {
   const [jobTitle, setJobTitle] = useState('');
   const [location, setLocation] = useState('');
+  const [searchResults, setSearchResults] = useState<Job[]>([]);
+  const [hasSearched, setHasSearched] = useState(false);
+  const [isSearching, setIsSearching] = useState(false);
 
   const handleJobSearch = () => {
+    if (!jobTitle.trim() && !location.trim()) {
+      return;
+    }
+
+    setIsSearching(true);
     console.log('Searching for:', jobTitle, 'in', location);
-    // Job search functionality would go here
+    
+    // Simulate API call delay
+    setTimeout(() => {
+      const results = searchJobs(jobTitle, location);
+      setSearchResults(results);
+      setHasSearched(true);
+      setIsSearching(false);
+      console.log('Search results:', results);
+    }, 1000);
+  };
+
+  const handleKeyPress = (e: React.KeyboardEvent) => {
+    if (e.key === 'Enter') {
+      handleJobSearch();
+    }
   };
 
   return (
@@ -27,7 +51,7 @@ const Hero = () => {
         <div className="absolute top-1/2 right-10 w-16 h-16 bg-blue-100 rounded-full opacity-60"></div>
       </div>
 
-      <div className="container mx-auto px-6 lg:px-8 grid lg:grid-cols-2 gap-16 items-center relative z-10">
+      <div className="container mx-auto px-6 lg:px-8 relative z-10">
         {/* Enhanced Left Content */}
         <div className="space-y-10 animate-fade-in">
           {/* Badge */}
@@ -60,6 +84,7 @@ const Hero = () => {
                   placeholder="Job title, skills, or company"
                   value={jobTitle}
                   onChange={(e) => setJobTitle(e.target.value)}
+                  onKeyPress={handleKeyPress}
                   className="pl-12 h-14 border-gray-200 rounded-xl text-lg placeholder:text-gray-400 focus:border-blue-500 focus:ring-blue-500/20"
                 />
               </div>
@@ -69,6 +94,7 @@ const Hero = () => {
                   placeholder="City, state, or remote"
                   value={location}
                   onChange={(e) => setLocation(e.target.value)}
+                  onKeyPress={handleKeyPress}
                   className="pl-12 h-14 border-gray-200 rounded-xl text-lg placeholder:text-gray-400 focus:border-blue-500 focus:ring-blue-500/20"
                 />
               </div>
@@ -76,11 +102,12 @@ const Hero = () => {
             <div className="flex flex-col sm:flex-row gap-4">
               <Button 
                 onClick={handleJobSearch}
-                className="flex-1 h-14 bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white font-semibold rounded-xl text-lg transition-all duration-300 hover:scale-[1.02] hover:shadow-xl"
+                disabled={isSearching || (!jobTitle.trim() && !location.trim())}
+                className="flex-1 h-14 bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white font-semibold rounded-xl text-lg transition-all duration-300 hover:scale-[1.02] hover:shadow-xl disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100"
               >
                 <Search className="mr-3 h-5 w-5" />
-                Search Jobs
-                <ArrowRight className="ml-3 h-5 w-5" />
+                {isSearching ? 'Searching...' : 'Search Jobs'}
+                {!isSearching && <ArrowRight className="ml-3 h-5 w-5" />}
               </Button>
               <Button 
                 variant="outline"
@@ -155,6 +182,14 @@ const Hero = () => {
           </div>
         </div>
       </div>
+
+      {/* Job Search Results */}
+      {hasSearched && (
+        <JobResults 
+          jobs={searchResults}
+          searchQuery={{ jobTitle, location }}
+        />
+      )}
     </section>
   );
 };
