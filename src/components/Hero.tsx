@@ -1,5 +1,6 @@
+
 import React, { useState } from 'react';
-import { Search, MapPin, Briefcase, ArrowRight, Play, Star } from 'lucide-react';
+import { Search, MapPin, Briefcase, ArrowRight, Play, Star, Sparkles, TrendingUp } from 'lucide-react';
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import JobResults from './JobResults';
@@ -37,81 +38,89 @@ const Hero = () => {
   };
 
   return (
-    <section className="relative min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-100 flex items-center overflow-hidden">
-      {/* Enhanced Background Elements */}
+    <section className="relative min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-100 overflow-hidden">
+      {/* Modern Background Elements */}
       <div className="absolute inset-0 overflow-hidden">
-        {/* Animated gradient orbs */}
-        <div className="absolute top-1/4 -right-32 w-96 h-96 bg-gradient-to-r from-blue-400 to-purple-500 rounded-full opacity-20 blur-3xl animate-pulse"></div>
-        <div className="absolute -bottom-32 -left-32 w-96 h-96 bg-gradient-to-r from-pink-400 to-red-500 rounded-full opacity-20 blur-3xl animate-pulse delay-1000"></div>
-        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-gradient-to-r from-cyan-400 to-blue-500 rounded-full opacity-10 blur-2xl animate-pulse delay-500"></div>
+        {/* Enhanced gradient meshes */}
+        <div className="absolute top-0 -right-40 w-[600px] h-[600px] bg-gradient-to-br from-blue-400/20 via-purple-400/20 to-pink-400/20 rounded-full blur-3xl animate-pulse"></div>
+        <div className="absolute -bottom-40 -left-40 w-[500px] h-[500px] bg-gradient-to-tr from-emerald-400/20 via-cyan-400/20 to-blue-400/20 rounded-full blur-3xl animate-pulse delay-1000"></div>
         
-        {/* Geometric shapes */}
-        <div className="absolute top-20 right-20 w-32 h-32 border border-blue-200 rounded-3xl transform rotate-12 opacity-60"></div>
-        <div className="absolute bottom-32 right-32 w-24 h-24 bg-gradient-to-r from-pink-200 to-purple-200 rounded-2xl transform -rotate-12 opacity-80"></div>
-        <div className="absolute top-1/2 right-10 w-16 h-16 bg-blue-100 rounded-full opacity-60"></div>
+        {/* Floating geometric elements */}
+        <div className="absolute top-20 right-20 w-20 h-20 bg-gradient-to-br from-blue-200/60 to-purple-200/60 rounded-2xl rotate-12 animate-pulse"></div>
+        <div className="absolute top-1/3 right-16 w-12 h-12 bg-gradient-to-br from-pink-200/60 to-red-200/60 rounded-xl -rotate-12"></div>
+        <div className="absolute bottom-1/3 left-16 w-16 h-16 bg-gradient-to-br from-emerald-200/60 to-cyan-200/60 rounded-full"></div>
+        
+        {/* Grid pattern overlay */}
+        <div className="absolute inset-0 bg-[linear-gradient(to_right,#8080800a_1px,transparent_1px),linear-gradient(to_bottom,#8080800a_1px,transparent_1px)] bg-[size:14px_24px]"></div>
       </div>
 
-      <div className="container mx-auto px-6 lg:px-8 relative z-10">
-        {/* Enhanced Left Content */}
-        <div className="space-y-10 animate-fade-in">
-          {/* Badge */}
-          <div className="inline-flex items-center px-4 py-2 bg-white/70 backdrop-blur-sm rounded-full border border-blue-100 shadow-sm">
-            <Star className="w-4 h-4 text-yellow-500 mr-2 fill-current" />
-            <span className="text-sm font-medium text-gray-700">#1 Job Portal Platform</span>
+      <div className="container mx-auto px-6 lg:px-8 relative z-10 pt-20 pb-16">
+        <div className="max-w-4xl mx-auto text-center space-y-12">
+          {/* Enhanced Badge */}
+          <div className="inline-flex items-center px-6 py-3 bg-white/80 backdrop-blur-md rounded-full border border-white/30 shadow-lg">
+            <Sparkles className="w-5 h-5 text-yellow-500 mr-2 fill-current animate-pulse" />
+            <span className="text-sm font-semibold text-gray-700">✨ #1 AI-Powered Job Platform</span>
+            <TrendingUp className="w-4 h-4 text-green-500 ml-2" />
           </div>
 
+          {/* Modern Typography */}
           <div className="space-y-6">
-            <h1 className="text-5xl lg:text-7xl font-black text-gray-900 leading-[0.9] tracking-tight">
-              Find your
-              <span className="block text-transparent bg-clip-text bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600">
-                dream job
+            <h1 className="text-6xl lg:text-8xl font-black text-gray-900 leading-[0.85] tracking-tight">
+              <span className="block">Discover</span>
+              <span className="block text-transparent bg-clip-text bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 animate-pulse">
+                Your Future
               </span>
-              <span className="block text-4xl lg:text-5xl font-bold text-gray-700 mt-2">
-                with ease
+              <span className="block text-4xl lg:text-6xl font-bold text-gray-700 mt-4">
+                Career Today
               </span>
             </h1>
-            <p className="text-xl lg:text-2xl text-gray-600 leading-relaxed max-w-xl">
-              Connect with top companies, explore exciting opportunities, and take your career to the next level with our AI-powered job matching.
+            <p className="text-xl lg:text-2xl text-gray-600 leading-relaxed max-w-3xl mx-auto font-light">
+              Connect with leading companies worldwide. Powered by AI to match your skills with perfect opportunities and accelerate your career growth.
             </p>
           </div>
 
-          {/* Enhanced Search Form */}
-          <div className="bg-white/80 backdrop-blur-lg p-8 rounded-3xl shadow-2xl border border-white/20">
-            <div className="grid md:grid-cols-2 gap-4 mb-6">
+          {/* Modern Search Form */}
+          <div className="bg-white/90 backdrop-blur-xl p-8 lg:p-10 rounded-3xl shadow-2xl border border-white/40 max-w-3xl mx-auto">
+            <div className="grid md:grid-cols-2 gap-6 mb-8">
               <div className="relative group">
-                <Briefcase className="absolute left-4 top-4 h-5 w-5 text-gray-400 group-focus-within:text-blue-500 transition-colors" />
+                <div className="absolute inset-y-0 left-4 flex items-center pointer-events-none">
+                  <Briefcase className="h-6 w-6 text-gray-400 group-focus-within:text-blue-500 transition-colors duration-200" />
+                </div>
                 <Input
                   placeholder="Job title, skills, or company"
                   value={jobTitle}
                   onChange={(e) => setJobTitle(e.target.value)}
                   onKeyPress={handleKeyPress}
-                  className="pl-12 h-14 border-gray-200 rounded-xl text-lg placeholder:text-gray-400 focus:border-blue-500 focus:ring-blue-500/20"
+                  className="pl-14 h-16 border-2 border-gray-200 rounded-2xl text-lg placeholder:text-gray-400 focus:border-blue-500 focus:ring-4 focus:ring-blue-500/20 transition-all duration-200 font-medium"
                 />
               </div>
               <div className="relative group">
-                <MapPin className="absolute left-4 top-4 h-5 w-5 text-gray-400 group-focus-within:text-blue-500 transition-colors" />
+                <div className="absolute inset-y-0 left-4 flex items-center pointer-events-none">
+                  <MapPin className="h-6 w-6 text-gray-400 group-focus-within:text-blue-500 transition-colors duration-200" />
+                </div>
                 <Input
                   placeholder="City, state, or remote"
                   value={location}
                   onChange={(e) => setLocation(e.target.value)}
                   onKeyPress={handleKeyPress}
-                  className="pl-12 h-14 border-gray-200 rounded-xl text-lg placeholder:text-gray-400 focus:border-blue-500 focus:ring-blue-500/20"
+                  className="pl-14 h-16 border-2 border-gray-200 rounded-2xl text-lg placeholder:text-gray-400 focus:border-blue-500 focus:ring-4 focus:ring-blue-500/20 transition-all duration-200 font-medium"
                 />
               </div>
             </div>
+            
             <div className="flex flex-col sm:flex-row gap-4">
               <Button 
                 onClick={handleJobSearch}
                 disabled={isSearching || (!jobTitle.trim() && !location.trim())}
-                className="flex-1 h-14 bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white font-semibold rounded-xl text-lg transition-all duration-300 hover:scale-[1.02] hover:shadow-xl disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100"
+                className="flex-1 h-16 bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white font-bold rounded-2xl text-lg transition-all duration-300 hover:scale-[1.02] hover:shadow-2xl disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100 shadow-lg"
               >
-                <Search className="mr-3 h-5 w-5" />
-                {isSearching ? 'Searching...' : 'Search Jobs'}
-                {!isSearching && <ArrowRight className="ml-3 h-5 w-5" />}
+                <Search className="mr-3 h-6 w-6" />
+                {isSearching ? 'Searching...' : 'Find Dream Jobs'}
+                {!isSearching && <ArrowRight className="ml-3 h-6 w-6" />}
               </Button>
               <Button 
                 variant="outline"
-                className="h-14 px-8 border-2 border-gray-200 hover:border-blue-500 hover:bg-blue-50 rounded-xl font-semibold transition-all duration-300"
+                className="h-16 px-8 border-2 border-gray-300 hover:border-blue-500 hover:bg-blue-50 rounded-2xl font-bold text-lg transition-all duration-300 hover:scale-[1.02] hover:shadow-lg"
               >
                 <Play className="mr-2 h-5 w-5" />
                 Watch Demo
@@ -119,65 +128,25 @@ const Hero = () => {
             </div>
           </div>
 
-          {/* Enhanced Stats */}
-          <div className="grid grid-cols-3 gap-8 pt-8">
-            <div className="text-center group cursor-pointer">
-              <div className="text-4xl lg:text-5xl font-black bg-gradient-to-r from-blue-600 to-cyan-500 bg-clip-text text-transparent group-hover:scale-110 transition-transform duration-300">
+          {/* Enhanced Stats with Modern Cards */}
+          <div className="grid grid-cols-3 gap-6 pt-12 max-w-2xl mx-auto">
+            <div className="bg-white/70 backdrop-blur-md rounded-2xl p-6 border border-white/30 shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 group cursor-pointer">
+              <div className="text-4xl lg:text-5xl font-black bg-gradient-to-br from-blue-600 to-cyan-500 bg-clip-text text-transparent group-hover:scale-110 transition-transform duration-300">
                 50K+
               </div>
-              <div className="text-gray-600 font-medium text-lg">Active Jobs</div>
+              <div className="text-gray-600 font-semibold text-base">Active Jobs</div>
             </div>
-            <div className="text-center group cursor-pointer">
-              <div className="text-4xl lg:text-5xl font-black bg-gradient-to-r from-purple-600 to-pink-500 bg-clip-text text-transparent group-hover:scale-110 transition-transform duration-300">
+            <div className="bg-white/70 backdrop-blur-md rounded-2xl p-6 border border-white/30 shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 group cursor-pointer">
+              <div className="text-4xl lg:text-5xl font-black bg-gradient-to-br from-purple-600 to-pink-500 bg-clip-text text-transparent group-hover:scale-110 transition-transform duration-300">
                 2K+
               </div>
-              <div className="text-gray-600 font-medium text-lg">Companies</div>
+              <div className="text-gray-600 font-semibold text-base">Companies</div>
             </div>
-            <div className="text-center group cursor-pointer">
-              <div className="text-4xl lg:text-5xl font-black bg-gradient-to-r from-green-600 to-emerald-500 bg-clip-text text-transparent group-hover:scale-110 transition-transform duration-300">
+            <div className="bg-white/70 backdrop-blur-md rounded-2xl p-6 border border-white/30 shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 group cursor-pointer">
+              <div className="text-4xl lg:text-5xl font-black bg-gradient-to-br from-green-600 to-emerald-500 bg-clip-text text-transparent group-hover:scale-110 transition-transform duration-300">
                 100K+
               </div>
-              <div className="text-gray-600 font-medium text-lg">Success Stories</div>
-            </div>
-          </div>
-        </div>
-
-        {/* Enhanced Right Content */}
-        <div className="relative animate-scale-in">
-          {/* Main Image Container */}
-          <div className="relative">
-            <div className="absolute inset-0 bg-gradient-to-r from-blue-600/20 to-purple-600/20 rounded-3xl blur-2xl transform scale-105"></div>
-            <div className="relative bg-white/10 backdrop-blur-sm rounded-3xl p-2 border border-white/20">
-              <img
-                src="https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?w=600&h=600&fit=crop"
-                alt="Professional workspace with laptop and modern technology"
-                className="w-full h-auto rounded-2xl shadow-2xl object-cover"
-              />
-            </div>
-          </div>
-
-          {/* Floating Achievement Cards */}
-          <div className="absolute -top-6 -left-6 bg-white/90 backdrop-blur-sm rounded-2xl p-4 shadow-xl border border-white/50 animate-pulse">
-            <div className="flex items-center space-x-3">
-              <div className="w-12 h-12 bg-gradient-to-r from-green-400 to-emerald-500 rounded-xl flex items-center justify-center">
-                <Star className="w-6 h-6 text-white fill-current" />
-              </div>
-              <div>
-                <div className="font-bold text-gray-900 text-lg">98% Match</div>
-                <div className="text-gray-600 text-sm">Success Rate</div>
-              </div>
-            </div>
-          </div>
-
-          <div className="absolute -bottom-6 -right-6 bg-white/90 backdrop-blur-sm rounded-2xl p-4 shadow-xl border border-white/50 animate-pulse delay-1000">
-            <div className="flex items-center space-x-3">
-              <div className="w-12 h-12 bg-gradient-to-r from-blue-400 to-purple-500 rounded-xl flex items-center justify-center">
-                <Briefcase className="w-6 h-6 text-white" />
-              </div>
-              <div>
-                <div className="font-bold text-gray-900 text-lg">24/7</div>
-                <div className="text-gray-600 text-sm">Support</div>
-              </div>
+              <div className="text-gray-600 font-semibold text-base">Success Stories</div>
             </div>
           </div>
         </div>
