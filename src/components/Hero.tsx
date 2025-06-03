@@ -4,7 +4,8 @@ import { Search, MapPin, Briefcase, ArrowRight, Play, Star, Sparkles, TrendingUp
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import JobResults from './JobResults';
-import { searchJobs, Job } from '../utils/mockJobData';
+import { jobService } from '../services/jobService';
+import { Job } from '../lib/supabase';
 
 const Hero = () => {
   const [jobTitle, setJobTitle] = useState('');
@@ -12,23 +13,28 @@ const Hero = () => {
   const [searchResults, setSearchResults] = useState<Job[]>([]);
   const [hasSearched, setHasSearched] = useState(false);
   const [isSearching, setIsSearching] = useState(false);
+  const [error, setError] = useState<string | null>(null);
 
-  const handleJobSearch = () => {
+  const handleJobSearch = async () => {
     if (!jobTitle.trim() && !location.trim()) {
       return;
     }
 
     setIsSearching(true);
+    setError(null);
     console.log('Searching for:', jobTitle, 'in', location);
     
-    // Simulate API call delay
-    setTimeout(() => {
-      const results = searchJobs(jobTitle, location);
+    try {
+      const results = await jobService.searchJobs(jobTitle, location);
       setSearchResults(results);
       setHasSearched(true);
-      setIsSearching(false);
       console.log('Search results:', results);
-    }, 1000);
+    } catch (err) {
+      console.error('Search error:', err);
+      setError('Failed to search jobs. Please try again.');
+    } finally {
+      setIsSearching(false);
+    }
   };
 
   const handleKeyPress = (e: React.KeyboardEvent) => {
@@ -81,6 +87,12 @@ const Hero = () => {
 
           {/* Modern Search Form */}
           <div className="bg-white/90 backdrop-blur-xl p-8 lg:p-10 rounded-3xl shadow-2xl border border-white/40 max-w-3xl mx-auto">
+            {error && (
+              <div className="mb-6 p-4 bg-red-100 border border-red-300 rounded-xl text-red-700">
+                {error}
+              </div>
+            )}
+            
             <div className="grid md:grid-cols-2 gap-6 mb-8">
               <div className="relative group">
                 <div className="absolute inset-y-0 left-4 flex items-center pointer-events-none">

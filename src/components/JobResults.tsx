@@ -2,17 +2,7 @@
 import React from 'react';
 import { MapPin, Briefcase, Clock, DollarSign } from 'lucide-react';
 import { Button } from "@/components/ui/button";
-
-interface Job {
-  id: number;
-  title: string;
-  company: string;
-  location: string;
-  type: string;
-  salary: string;
-  description: string;
-  postedDays: number;
-}
+import { Job } from '../lib/supabase';
 
 interface JobResultsProps {
   jobs: Job[];
@@ -31,7 +21,7 @@ const JobResults = ({ jobs, searchQuery }: JobResultsProps) => {
           <h3 className="text-xl font-semibold text-gray-900 mb-2">No jobs found</h3>
           <p className="text-gray-600">
             No jobs match your search criteria for "{searchQuery.jobTitle}" in "{searchQuery.location}". 
-            Try adjusting your search terms.
+            Try adjusting your search terms or check back later for new opportunities.
           </p>
         </div>
       </div>
@@ -59,7 +49,7 @@ const JobResults = ({ jobs, searchQuery }: JobResultsProps) => {
                 <div className="text-lg font-bold text-green-600">{job.salary}</div>
                 <div className="text-sm text-gray-500 flex items-center">
                   <Clock className="w-4 h-4 mr-1" />
-                  {job.postedDays} days ago
+                  {job.posted_days} days ago
                 </div>
               </div>
             </div>
