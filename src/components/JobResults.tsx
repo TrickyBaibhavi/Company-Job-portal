@@ -3,6 +3,7 @@ import React from 'react';
 import { MapPin, Briefcase, Clock, DollarSign } from 'lucide-react';
 import { Button } from "@/components/ui/button";
 import { Job } from '../lib/supabase';
+import JobApplicationForm from './JobApplicationForm';
 
 interface JobResultsProps {
   jobs: Job[];
@@ -68,9 +69,11 @@ const JobResults = ({ jobs, searchQuery }: JobResultsProps) => {
             <p className="text-gray-700 mb-4 line-clamp-3">{job.description}</p>
 
             <div className="flex space-x-3">
-              <Button className="bg-blue-600 hover:bg-blue-700 text-white">
-                Apply Now
-              </Button>
+              <JobApplicationForm job={job}>
+                <Button className="bg-blue-600 hover:bg-blue-700 text-white">
+                  Apply Now
+                </Button>
+              </JobApplicationForm>
               <Button variant="outline" className="border-blue-600 text-blue-600 hover:bg-blue-50">
                 View Details
               </Button>
