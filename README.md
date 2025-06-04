@@ -1,6 +1,6 @@
 # Welcome to your Lovable project
 
-## Project info
+## Project Preview
 
 **URL**: https://vision-vitae-portal.lovable.app/
 
