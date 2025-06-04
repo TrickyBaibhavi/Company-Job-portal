@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { Search, MapPin, Briefcase, ArrowRight, Play, Star, Sparkles, TrendingUp } from 'lucide-react';
 import { Button } from "@/components/ui/button";
@@ -6,7 +5,6 @@ import { Input } from "@/components/ui/input";
 import JobResults from './JobResults';
 import { jobService } from '../services/jobService';
 import { Job } from '../lib/supabase';
-
 const Hero = () => {
   const [jobTitle, setJobTitle] = useState('');
   const [location, setLocation] = useState('');
@@ -14,16 +12,13 @@ const Hero = () => {
   const [hasSearched, setHasSearched] = useState(false);
   const [isSearching, setIsSearching] = useState(false);
   const [error, setError] = useState<string | null>(null);
-
   const handleJobSearch = async () => {
     if (!jobTitle.trim() && !location.trim()) {
       return;
     }
-
     setIsSearching(true);
     setError(null);
     console.log('Searching for:', jobTitle, 'in', location);
-    
     try {
       const results = await jobService.searchJobs(jobTitle, location);
       setSearchResults(results);
@@ -36,15 +31,12 @@ const Hero = () => {
       setIsSearching(false);
     }
   };
-
   const handleKeyPress = (e: React.KeyboardEvent) => {
     if (e.key === 'Enter') {
       handleJobSearch();
     }
   };
-
-  return (
-    <section className="relative min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-100 overflow-hidden">
+  return <section className="relative min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-100 overflow-hidden">
       {/* Modern Background Elements */}
       <div className="absolute inset-0 overflow-hidden">
         {/* Enhanced gradient meshes */}
@@ -87,56 +79,32 @@ const Hero = () => {
 
           {/* Modern Search Form */}
           <div className="bg-white/90 backdrop-blur-xl p-8 lg:p-10 rounded-3xl shadow-2xl border border-white/40 max-w-3xl mx-auto">
-            {error && (
-              <div className="mb-6 p-4 bg-red-100 border border-red-300 rounded-xl text-red-700">
+            {error && <div className="mb-6 p-4 bg-red-100 border border-red-300 rounded-xl text-red-700">
                 {error}
-              </div>
-            )}
+              </div>}
             
             <div className="grid md:grid-cols-2 gap-6 mb-8">
               <div className="relative group">
                 <div className="absolute inset-y-0 left-4 flex items-center pointer-events-none">
                   <Briefcase className="h-6 w-6 text-gray-400 group-focus-within:text-blue-500 transition-colors duration-200" />
                 </div>
-                <Input
-                  placeholder="Job title, skills, or company"
-                  value={jobTitle}
-                  onChange={(e) => setJobTitle(e.target.value)}
-                  onKeyPress={handleKeyPress}
-                  className="pl-14 h-16 border-2 border-gray-200 rounded-2xl text-lg placeholder:text-gray-400 focus:border-blue-500 focus:ring-4 focus:ring-blue-500/20 transition-all duration-200 font-medium"
-                />
+                <Input placeholder="Job title, skills, or company" value={jobTitle} onChange={e => setJobTitle(e.target.value)} onKeyPress={handleKeyPress} className="pl-14 h-16 border-2 border-gray-200 rounded-2xl text-lg placeholder:text-gray-400 focus:border-blue-500 focus:ring-4 focus:ring-blue-500/20 transition-all duration-200 font-medium" />
               </div>
               <div className="relative group">
                 <div className="absolute inset-y-0 left-4 flex items-center pointer-events-none">
                   <MapPin className="h-6 w-6 text-gray-400 group-focus-within:text-blue-500 transition-colors duration-200" />
                 </div>
-                <Input
-                  placeholder="City, state, or remote"
-                  value={location}
-                  onChange={(e) => setLocation(e.target.value)}
-                  onKeyPress={handleKeyPress}
-                  className="pl-14 h-16 border-2 border-gray-200 rounded-2xl text-lg placeholder:text-gray-400 focus:border-blue-500 focus:ring-4 focus:ring-blue-500/20 transition-all duration-200 font-medium"
-                />
+                <Input placeholder="City, state, or remote" value={location} onChange={e => setLocation(e.target.value)} onKeyPress={handleKeyPress} className="pl-14 h-16 border-2 border-gray-200 rounded-2xl text-lg placeholder:text-gray-400 focus:border-blue-500 focus:ring-4 focus:ring-blue-500/20 transition-all duration-200 font-medium" />
               </div>
             </div>
             
             <div className="flex flex-col sm:flex-row gap-4">
-              <Button 
-                onClick={handleJobSearch}
-                disabled={isSearching || (!jobTitle.trim() && !location.trim())}
-                className="flex-1 h-16 bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white font-bold rounded-2xl text-lg transition-all duration-300 hover:scale-[1.02] hover:shadow-2xl disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100 shadow-lg"
-              >
+              <Button onClick={handleJobSearch} disabled={isSearching || !jobTitle.trim() && !location.trim()} className="flex-1 h-16 bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white font-bold rounded-2xl text-lg transition-all duration-300 hover:scale-[1.02] hover:shadow-2xl disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100 shadow-lg">
                 <Search className="mr-3 h-6 w-6" />
                 {isSearching ? 'Searching...' : 'Find Dream Jobs'}
                 {!isSearching && <ArrowRight className="ml-3 h-6 w-6" />}
               </Button>
-              <Button 
-                variant="outline"
-                className="h-16 px-8 border-2 border-gray-300 hover:border-blue-500 hover:bg-blue-50 rounded-2xl font-bold text-lg transition-all duration-300 hover:scale-[1.02] hover:shadow-lg"
-              >
-                <Play className="mr-2 h-5 w-5" />
-                Watch Demo
-              </Button>
+              
             </div>
           </div>
 
@@ -165,14 +133,10 @@ const Hero = () => {
       </div>
 
       {/* Job Search Results */}
-      {hasSearched && (
-        <JobResults 
-          jobs={searchResults}
-          searchQuery={{ jobTitle, location }}
-        />
-      )}
-    </section>
-  );
+      {hasSearched && <JobResults jobs={searchResults} searchQuery={{
+      jobTitle,
+      location
+    }} />}
+    </section>;
 };
-
 export default Hero;
