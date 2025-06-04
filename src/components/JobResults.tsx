@@ -1,9 +1,9 @@
-
-import React from 'react';
+import React, { useState } from 'react';
 import { MapPin, Briefcase, Clock, DollarSign } from 'lucide-react';
 import { Button } from "@/components/ui/button";
 import { Job } from '../lib/supabase';
 import JobApplicationForm from './JobApplicationForm';
+import JobDetailsDialog from './JobDetailsDialog';
 
 interface JobResultsProps {
   jobs: Job[];
@@ -14,6 +14,14 @@ interface JobResultsProps {
 }
 
 const JobResults = ({ jobs, searchQuery }: JobResultsProps) => {
+  const [selectedJob, setSelectedJob] = useState<Job | null>(null);
+  const [isDetailsDialogOpen, setIsDetailsDialogOpen] = useState(false);
+
+  const handleViewDetails = (job: Job) => {
+    setSelectedJob(job);
+    setIsDetailsDialogOpen(true);
+  };
+
   if (jobs.length === 0) {
     return (
       <div className="mt-8 p-8 bg-white rounded-2xl shadow-lg border border-gray-100">
@@ -74,13 +82,24 @@ const JobResults = ({ jobs, searchQuery }: JobResultsProps) => {
                   Apply Now
                 </Button>
               </JobApplicationForm>
-              <Button variant="outline" className="border-blue-600 text-blue-600 hover:bg-blue-50">
+              <Button 
+                variant="outline" 
+                className="border-blue-600 text-blue-600 hover:bg-blue-50"
+                onClick={() => handleViewDetails(job)}
+              >
                 View Details
               </Button>
             </div>
           </div>
         ))}
       </div>
+
+      {/* Job Details Dialog */}
+      <JobDetailsDialog 
+        job={selectedJob}
+        open={isDetailsDialogOpen}
+        onOpenChange={setIsDetailsDialogOpen}
+      />
     </div>
   );
 };
