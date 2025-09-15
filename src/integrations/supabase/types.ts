@@ -97,6 +97,42 @@ export type Database = {
           },
         ]
       }
+      jobs: {
+        Row: {
+          company: string
+          created_at: string
+          description: string
+          id: number
+          location: string
+          posted_days: number
+          salary: string
+          title: string
+          type: string
+        }
+        Insert: {
+          company: string
+          created_at?: string
+          description: string
+          id?: number
+          location: string
+          posted_days?: number
+          salary: string
+          title: string
+          type?: string
+        }
+        Update: {
+          company?: string
+          created_at?: string
+          description?: string
+          id?: number
+          location?: string
+          posted_days?: number
+          salary?: string
+          title?: string
+          type?: string
+        }
+        Relationships: []
+      }
       lessons: {
         Row: {
           content: string | null
