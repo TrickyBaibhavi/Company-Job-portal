@@ -36,8 +36,8 @@ const About = () => {
 
   const handleDownloadResume = () => {
     const link = document.createElement('a');
-    link.href = '/resume.pdf'; // Path to your resume file in the public folder
-    link.download = 'John_Doe_Resume.pdf'; // Name for the downloaded file
+    link.href = '/productbased_resume.pdf'; // Path to your resume file in the public folder
+    link.download = 'productbased_resume.pdf'; // Name for the downloaded file
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
