@@ -7,7 +7,9 @@ import {
   DialogHeader,
   DialogTitle,
 } from "@/components/ui/dialog";
-import { Job } from '../lib/supabase';
+import type { Database } from '@/integrations/supabase/types';
+
+type Job = Database['public']['Tables']['jobs']['Row'];
 
 interface JobDetailsDialogProps {
   job: Job | null;

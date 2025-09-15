@@ -1,5 +1,8 @@
 
-import { supabase, Job } from '../lib/supabase'
+import { supabase } from '@/integrations/supabase/client'
+import type { Database } from '@/integrations/supabase/types'
+
+type Job = Database['public']['Tables']['jobs']['Row']
 
 export const jobService = {
   // Search jobs with filters

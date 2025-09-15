@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
 import { MapPin, Briefcase, Clock, DollarSign } from 'lucide-react';
 import { Button } from "@/components/ui/button";
-import { Job } from '../lib/supabase';
+import type { Database } from '@/integrations/supabase/types';
+
+type Job = Database['public']['Tables']['jobs']['Row'];
 import JobApplicationForm from './JobApplicationForm';
 import JobDetailsDialog from './JobDetailsDialog';
 

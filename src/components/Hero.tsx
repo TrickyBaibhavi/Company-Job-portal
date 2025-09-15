@@ -4,7 +4,9 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import JobResults from './JobResults';
 import { jobService } from '../services/jobService';
-import { Job } from '../lib/supabase';
+import type { Database } from '@/integrations/supabase/types';
+
+type Job = Database['public']['Tables']['jobs']['Row'];
 const Hero = () => {
   const [jobTitle, setJobTitle] = useState('');
   const [location, setLocation] = useState('');

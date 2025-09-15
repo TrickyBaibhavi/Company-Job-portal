@@ -11,7 +11,9 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog";
-import { Job } from '../lib/supabase';
+import type { Database } from '@/integrations/supabase/types';
+
+type Job = Database['public']['Tables']['jobs']['Row'];
 import { useToast } from "@/hooks/use-toast";
 
 interface JobApplicationFormProps {
