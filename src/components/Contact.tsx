@@ -28,10 +28,10 @@ const Contact = () => {
     setIsSubmitting(true);
     
     try {
-      // EmailJS configuration - Replace with your actual values
-      const SERVICE_ID = 'your_service_id';
-      const TEMPLATE_ID = 'your_template_id';
-      const PUBLIC_KEY = 'your_public_key';
+      // EmailJS configuration
+      const SERVICE_ID = 'service_hqy4zmt';
+      const TEMPLATE_ID = 'template_avb3d99';
+      const PUBLIC_KEY = 'gw106xTrwr-d6tuuo';
       
       const templateParams = {
         from_name: formData.name,
