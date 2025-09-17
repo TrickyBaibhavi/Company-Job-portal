@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { useToast } from "@/hooks/use-toast";
-import { supabase } from "@/integrations/supabase/client";
+import emailjs from '@emailjs/browser';
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -28,21 +28,22 @@ const Contact = () => {
     setIsSubmitting(true);
     
     try {
-      // Send email using Supabase edge function
-      const { data, error } = await supabase.functions.invoke('send-contact-email', {
-        body: {
-          name: formData.name,
-          email: formData.email,
-          subject: formData.subject,
-          message: formData.message,
-        },
-      });
+      // EmailJS configuration - Replace with your actual values
+      const SERVICE_ID = 'your_service_id';
+      const TEMPLATE_ID = 'your_template_id';
+      const PUBLIC_KEY = 'your_public_key';
+      
+      const templateParams = {
+        from_name: formData.name,
+        from_email: formData.email,
+        subject: formData.subject,
+        message: formData.message,
+        to_name: 'John Doe', // Replace with your name
+      };
 
-      if (error) {
-        throw error;
-      }
-
-      console.log('Email sent successfully:', data);
+      const result = await emailjs.send(SERVICE_ID, TEMPLATE_ID, templateParams, PUBLIC_KEY);
+      
+      console.log('Email sent successfully:', result);
       toast({
         title: "Message Sent Successfully! ✨",
         description: "Thank you for reaching out. I'll get back to you within 24 hours.",
@@ -53,7 +54,7 @@ const Contact = () => {
       console.error('Email sending error:', error);
       toast({
         title: "Failed to Send Message",
-        description: error.message || "There was an error sending your message. Please try again or contact me directly.",
+        description: "There was an error sending your message. Please try again or contact me directly.",
         variant: "destructive",
       });
     } finally {
